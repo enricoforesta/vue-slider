@@ -6,7 +6,7 @@ createApp({
     data() {
         return {
             index: 0,
-            active: "",
+            active: "active",
             slide: [
                 {
                     image: 'img/01.webp',
@@ -47,8 +47,8 @@ createApp({
             if (this.index > this.slide.length - 1) {
                 this.index = 0;
             };
+        this.active[this.index] = true
 
-            this.active[this.index] = "active"
         },
         prev() {
             console.log("--");
