@@ -6,7 +6,8 @@ createApp({
     data() {
         return {
             index: 0,
-            active: [],
+            // active: [],
+            time: "",
             slide: [
                 {
                     image: 'img/01.webp',
@@ -38,35 +39,37 @@ createApp({
     },
     mounted() {
         console.log(this.slide);
-        this.active[this.index] = true;
+        // this.active[this.index] = true;
         this.autoPlay()
     },
     methods: {
         next() {
             console.log("++");
-            this.active[this.index] = false;
+            // this.active[this.index] = false;
             this.index++;
             if (this.index > this.slide.length - 1) {
                 this.index = 0;
             };
-             this.active[this.index] = true;
+            //  this.active[this.index] = true;
         },
         prev() {
             console.log("--");
-            this.active[this.index] = false;
+            // this.active[this.index] = false;
             this.index--;
             if (this.index < 0) {
                 this.index = this.slide.length - 1;
             }
-            this.active[this.index] = true;
+            // this.active[this.index] = true;
         },
         changeImage(i){
             this.index = i;
         },
         autoPlay(){
-            setInterval(() => this.next(), 3000);       
+            this.time = setInterval(() => this.next(), 3000);       
          },
-
+         stopAutoPlay(){
+            clearInterval(this.time)
+        }
     },
 }).mount("#app");
 console.log(createApp);
