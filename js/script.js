@@ -1,17 +1,15 @@
 "use strict"
-
 const { createApp } = Vue;
-
 createApp({
     data() {
         return {
             index: 0,
             // active: [],
-            time: "",
+            time: null,
             slide: [
                 {
                     image: 'img/01.webp',
-                    title: 'Marvel\'s Spiderman Miles Morale',
+                    title: 'Marvel\'s Spiderman Miles Morales',
                     text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
                 },
                 {
@@ -39,36 +37,31 @@ createApp({
     },
     mounted() {
         console.log(this.slide);
-        // this.active[this.index] = true;
-        this.autoPlay()
+         this.autoPlay()
     },
     methods: {
         next() {
             console.log("++");
-            // this.active[this.index] = false;
             this.index++;
             if (this.index > this.slide.length - 1) {
                 this.index = 0;
             };
-            //  this.active[this.index] = true;
         },
         prev() {
             console.log("--");
-            // this.active[this.index] = false;
             this.index--;
             if (this.index < 0) {
                 this.index = this.slide.length - 1;
             }
-            // this.active[this.index] = true;
         },
         changeImage(i){
             this.index = i;
         },
-        autoPlay(){
-            this.time = setInterval(() => this.next(), 3000);       
-         },
+         autoPlay(){
+            this.time = setInterval(this.next,3000);
+        },
          stopAutoPlay(){
-            clearInterval(this.time)
+            clearInterval(this.time);
         }
     },
 }).mount("#app");
